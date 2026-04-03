@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Daily · 2026年4月2日</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #000;
+      color: #E3F2FD;
+      font-family: -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background glow */
+    body::before {
+      content: '';
+      position: fixed;
+      bottom: -200px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(66,165,245,0.12) 0%, rgba(10,25,41,0.05) 60%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 32px 80px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 56px;
+      animation: fadeDown 0.6s ease both;
+    }
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1565C0, #42A5F5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .header-text h1 {
+      font-family: -apple-system, "SF Pro Display", sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.3px;
+    }
+    .date-badge {
+      display: inline-block;
+      margin-top: 4px;
+      padding: 2px 10px;
+      background: rgba(66,165,245,0.15);
+      border: 1px solid rgba(66,165,245,0.3);
+      border-radius: 20px;
+      font-size: 12px;
+      color: #42A5F5;
+      letter-spacing: 0.4px;
+    }
+
+    /* Summary card */
+    .summary-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 32px 36px;
+      margin-bottom: 40px;
+      animation: fadeUp 0.6s ease 0.1s both;
+      backdrop-filter: blur(8px);
+    }
+    .summary-card h2 {
+      font-family: -apple-system, "SF Pro Display", sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #42A5F5;
+      margin-bottom: 20px;
+    }
+    .summary-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .summary-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #CFE8FF;
+    }
+    .summary-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #42A5F5;
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 36px;
+      animation: fadeUp 0.6s ease both;
+    }
+    .section:nth-child(3) { animation-delay: 0.15s; }
+    .section:nth-child(4) { animation-delay: 0.2s; }
+    .section:nth-child(5) { animation-delay: 0.25s; }
+    .section:nth-child(6) { animation-delay: 0.3s; }
+    .section:nth-child(7) { animation-delay: 0.35s; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: -apple-system, "SF Pro Display", sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .section-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    /* News card */
+    .news-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .news-card:hover {
+      background: rgba(66,165,245,0.06);
+      border-color: rgba(66,165,245,0.25);
+      transform: translateY(-2px);
+    }
+    .news-card h3 {
+      font-family: -apple-system, "SF Pro Display", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .news-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #B0BEC5;
+    }
+    .news-card .tag {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 3px 10px;
+      background: rgba(66,165,245,0.1);
+      border-radius: 6px;
+      font-size: 12px;
+      color: #42A5F5;
+    }
+    .news-card a {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 13px;
+      color: #42A5F5;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .news-card a:hover { opacity: 1; }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+    th {
+      text-align: left;
+      padding: 8px 12px;
+      color: #42A5F5;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    td {
+      padding: 10px 12px;
+      color: #B0BEC5;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      line-height: 1.5;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* Trend list */
+    .trend-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .trend-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 14px;
+      line-height: 1.65;
+      color: #B0BEC5;
+    }
+    .trend-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(66,165,245,0.15);
+      color: #42A5F5;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Keywords */
+    .keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .keyword {
+      padding: 5px 14px;
+      background: rgba(66,165,245,0.08);
+      border: 1px solid rgba(66,165,245,0.2);
+      border-radius: 20px;
+      font-size: 13px;
+      color: #42A5F5;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .keyword:hover {
+      background: rgba(66,165,245,0.16);
+      border-color: rgba(66,165,245,0.4);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #546E7A;
+      animation: fadeUp 0.6s ease 0.5s both;
+    }
+    footer a { color: #42A5F5; text-decoration: none; opacity: 0.7; }
+    footer a:hover { opacity: 1; }
+
+    /* Animations */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container { padding: 40px 20px 60px; }
+      .summary-card { padding: 24px 20px; }
+      .news-card { padding: 20px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="logo-icon">🤖</div>
+    <div class="header-text">
+      <h1>AI Daily</h1>
+      <span class="date-badge">2026年4月2日 · Gemma 4</span>
+    </div>
+  </header>
+
+  <!-- Summary -->
+  <div class="summary-card">
+    <h2>核心摘要</h2>
+    <ul class="summary-list">
+      <li>Google DeepMind 发布 Gemma 4 系列，改用 Apache 2.0 授权，商业可用性史上最大突破</li>
+      <li>多变体覆盖从 31B 密集到 E2B 边缘，支持多模态与 256K 超长上下文</li>
+      <li>Day-0 生态全覆盖：llama.cpp、Ollama、vLLM、LM Studio、transformers.js 当天同步支持</li>
+      <li>本地 Agent 框架（Hermes、OpenClaw、Pi）加速落地，开放模型成 Agent 工作流核心引擎</li>
+      <li>Arena 排行榜开放模型第 3，GPQA Diamond 科学推理达 85.7%</li>
+    </ul>
+  </div>
+
+  <!-- Model Releases -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(66,165,245,0.15);">🚀</div>
+      模型发布
+    </div>
+
+    <div class="news-card">
+      <h3>Gemma 4 — Google DeepMind</h3>
+      <p>Google DeepMind 正式发布 Gemma 4 系列，定位推理与 Agent 工作流 + 本地/边缘部署。授权升级为 <strong style="color:#fff">Apache 2.0</strong>，是商业可用性最大变革。</p>
+      <table>
+        <tr><th>变体</th><th>规模</th><th>特点</th></tr>
+        <tr><td>Gemma 4 31B</td><td>密集大模型</td><td>256K 上下文，多模态</td></tr>
+        <tr><td>Gemma 4 26B MoE (A4B)</td><td>~4B 激活参数</td><td>极致效率</td></tr>
+        <tr><td>Gemma 4 E4B</td><td>边缘优化</td><td>移动 / IoT</td></tr>
+        <tr><td>Gemma 4 E2B</td><td>超紧凑</td><td>超低功耗设备</td></tr>
+      </table>
+      <span class="tag">文本 · 视觉 · 音频多模态</span>
+      <span class="tag" style="margin-left:6px">Function Calling</span>
+      <br/>
+      <a href="https://news.smol.ai/issues/26-04-02-gemma-4/" target="_blank">→ 查看原文</a>
+    </div>
+  </div>
+
+  <!-- Tools & Frameworks -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(102,187,106,0.15);">🛠</div>
+      工具框架
+    </div>
+
+    <div class="news-card">
+      <h3>本地推理引擎 — Day-0 全覆盖</h3>
+      <p><strong style="color:#fff">llama.cpp</strong>：一键 `brew install + llama-server`，内置 WebUI + MCP 协议，M2 Ultra 视频输入达 300 tokens/s。</p>
+      <p style="margin-top:10px"><strong style="color:#fff">Ollama</strong>：v0.20+ 快速集成，单命令部署。</p>
+      <p style="margin-top:10px"><strong style="color:#fff">vLLM</strong>：GPU / TPU / CPU 全平台生产级优化。</p>
+      <p style="margin-top:10px"><strong style="color:#fff">transformers.js + WebGPU</strong>：无需服务器，直接在浏览器中运行 Gemma 4。</p>
+    </div>
+
+    <div class="news-card">
+      <h3>生产部署平台</h3>
+      <p><strong style="color:#fff">Baseten</strong>：企业级 Day-0 支持 · <strong style="color:#fff">Modular/MAX</strong>：数天内生产就绪</p>
+      <p style="margin-top:10px"><strong style="color:#fff">Enzyme Plugin</strong>：工作区文件本地语义索引，查询延迟仅 <strong style="color:#42A5F5">8ms</strong></p>
+    </div>
+  </div>
+
+  <!-- Product Updates -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(255,183,77,0.15);">📦</div>
+      产品动态
+    </div>
+
+    <div class="news-card">
+      <h3>Hermes Agent 里程碑</h3>
+      <p>达到重要使用量里程碑，新增可插拔记忆系统，支持多提供商集成。OpenClaw / Pi 与 Hermes 共同定位为开放模型本地 Agent 引擎。</p>
+    </div>
+  </div>
+
+  <!-- Research -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(171,71,188,0.15);">📊</div>
+      研究与基准
+    </div>
+
+    <div class="news-card">
+      <h3>Gemma 4 31B 性能表现</h3>
+      <table>
+        <tr><th>基准</th><th>结果</th></tr>
+        <tr><td>Arena 排行榜</td><td>开放模型第 3，全榜第 27，美国开放模型第 1</td></tr>
+        <tr><td>GPQA Diamond（科学推理）</td><td><strong style="color:#42A5F5">85.7%</strong></td></tr>
+        <tr><td>Token 效率</td><td>~120万 tokens，超越 20 倍参数规模模型</td></tr>
+      </table>
+      <p style="margin-top:14px">架构分析（Sebastian Raschka）：与 Gemma 3 27B 架构变化极小，性能提升主要源于<strong style="color:#fff">训练配方与数据</strong>，而非新架构。混合注意力、KV-cache 跨层共享、Softcapping 是核心创新。</p>
+    </div>
+  </div>
+
+  <!-- Trends -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(239,83,80,0.15);">📈</div>
+      行业趋势
+    </div>
+
+    <div class="news-card">
+      <ul class="trend-list">
+        <li><span class="trend-num">1</span>本地 Agent 走向主流 — 从小众实验转向生产部署首选</li>
+        <li><span class="trend-num">2</span>Model-Harness 训练循环 — 成为开放模型差异化核心论点</li>
+        <li><span class="trend-num">3</span>边缘推理实用化 — E4B/E2B 变体推动移动 / IoT 落地</li>
+        <li><span class="trend-num">4</span>浏览器端推理可行 — WebGPU 使客户端大规模部署成为现实</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Keywords -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(66,165,245,0.1);">#</div>
+      关键词
+    </div>
+    <div class="keywords">
+      <span class="keyword">#Gemma4</span>
+      <span class="keyword">#GoogleDeepMind</span>
+      <span class="keyword">#Apache2.0</span>
+      <span class="keyword">#LocalAgents</span>
+      <span class="keyword">#llama.cpp</span>
+      <span class="keyword">#Ollama</span>
+      <span class="keyword">#vLLM</span>
+      <span class="keyword">#MoE</span>
+      <span class="keyword">#WebGPU</span>
+      <span class="keyword">#EdgeAI</span>
+      <span class="keyword">#HermesAgent</span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <span>数据来源: <a href="https://news.smol.ai/issues/26-04-02-gemma-4/" target="_blank">smol.ai AINews</a> · 覆盖周期: 2026-04-01 ~ 2026-04-02</span>
+    <span>Generated by AI Daily</span>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>幣圈日報 · 2026年4月4日</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #000; color: #E3F2FD;
+      font-family: -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; bottom: -200px; right: -200px;
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,130,49,0.08) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: ''; position: fixed; top: -200px; left: -200px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(66,165,245,0.05) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+
+    header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+    .logo-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: linear-gradient(135deg, #B45309, #F59E0B);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(245,158,11,0.3);
+    }
+    .header-text h1 { font-family: -apple-system, "SF Pro Display", sans-serif; font-size: 22px; font-weight: 700; color: #fff; }
+    .header-meta { display: flex; gap: 8px; margin-top: 5px; flex-wrap: wrap; }
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; }
+    .badge-date { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); color: #F59E0B; }
+    .badge-info { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #90A4AE; }
+    .badge-week { background: rgba(102,187,106,0.1); border: 1px solid rgba(102,187,106,0.2); color: #81C784; }
+
+    .summary-card {
+      background: rgba(245,158,11,0.05); border: 1px solid rgba(245,158,11,0.15);
+      border-radius: 20px; padding: 32px 36px; margin-bottom: 40px;
+      animation: fadeUp 0.5s ease 0.1s both;
+    }
+    .summary-card h2 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.4px; color: #F59E0B; margin-bottom: 18px; }
+    .summary-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .summary-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.65; color: #CFE8FF; }
+    .summary-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #F59E0B; margin-top: 9px; flex-shrink: 0; }
+
+    .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+    .section:nth-child(3) { animation-delay: 0.12s; }
+    .section:nth-child(4) { animation-delay: 0.17s; }
+    .section:nth-child(5) { animation-delay: 0.22s; }
+    .section:nth-child(6) { animation-delay: 0.27s; }
+    .section:nth-child(7) { animation-delay: 0.32s; }
+    .section:nth-child(8) { animation-delay: 0.37s; }
+
+    .section-title {
+      display: flex; align-items: center; gap: 10px;
+      font-family: -apple-system, "SF Pro Display", sans-serif;
+      font-size: 17px; font-weight: 700; color: #fff;
+      margin-bottom: 18px; padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+
+    .news-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 22px 26px; margin-bottom: 14px;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .news-card:hover { background: rgba(245,158,11,0.05); border-color: rgba(245,158,11,0.2); transform: translateY(-2px); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 9px; }
+    .news-card p { font-size: 13.5px; line-height: 1.7; color: #90A4AE; }
+    .news-card p + p { margin-top: 8px; }
+
+    .highlight-card {
+      background: rgba(66,165,245,0.06); border: 1px solid rgba(66,165,245,0.2);
+      border-left: 3px solid #42A5F5; border-radius: 16px; padding: 22px 26px; margin-bottom: 14px;
+    }
+    .highlight-card h3 { font-size: 15px; font-weight: 700; color: #90CAF9; margin-bottom: 9px; }
+
+    .alert-card {
+      background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2);
+      border-left: 3px solid #EF4444; border-radius: 16px; padding: 22px 26px; margin-bottom: 14px;
+    }
+    .alert-card h3 { font-size: 15px; font-weight: 700; color: #FCA5A5; margin-bottom: 9px; }
+
+    .quantum-card {
+      background: rgba(171,71,188,0.06); border: 1px solid rgba(171,71,188,0.2);
+      border-left: 3px solid #AB47BC; border-radius: 16px; padding: 22px 26px; margin-bottom: 14px;
+    }
+    .quantum-card h3 { font-size: 15px; font-weight: 700; color: #CE93D8; margin-bottom: 9px; }
+
+    .tag { display: inline-block; margin-top: 12px; margin-right: 6px; padding: 2px 9px; background: rgba(245,158,11,0.1); border-radius: 6px; font-size: 11px; color: #F59E0B; }
+    .tag-blue { background: rgba(66,165,245,0.1); color: #42A5F5; }
+    .tag-green { background: rgba(102,187,106,0.1); color: #81C784; }
+    .tag-red { background: rgba(239,68,68,0.1); color: #EF9A9A; }
+    .tag-purple { background: rgba(171,71,188,0.1); color: #CE93D8; }
+
+    .news-card a, .highlight-card a, .alert-card a, .quantum-card a {
+      display: inline-block; margin-top: 10px; font-size: 12px;
+      color: #42A5F5; text-decoration: none; opacity: 0.7; transition: opacity 0.2s;
+    }
+    .news-card a:hover, .highlight-card a:hover, .alert-card a:hover, .quantum-card a:hover { opacity: 1; }
+
+    .stat-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+    .stat-box {
+      flex: 1; min-width: 140px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; padding: 18px 20px; text-align: center;
+    }
+    .stat-box .val { font-size: 22px; font-weight: 700; color: #fff; }
+    .stat-box .val.down { color: #EF5350; }
+    .stat-box .val.up { color: #4CAF50; }
+    .stat-box .lbl { font-size: 11px; color: #546E7A; margin-top: 4px; }
+
+    .trend-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .trend-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 13.5px; line-height: 1.65; color: #90A4AE; }
+    .trend-num { width: 22px; height: 22px; border-radius: 50%; background: rgba(245,158,11,0.12); color: #F59E0B; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+
+    .keywords { display: flex; flex-wrap: wrap; gap: 8px; }
+    .keyword { padding: 5px 14px; background: rgba(245,158,11,0.07); border: 1px solid rgba(245,158,11,0.18); border-radius: 20px; font-size: 12px; color: #F59E0B; transition: background 0.2s; cursor: default; }
+    .keyword:hover { background: rgba(245,158,11,0.15); }
+
+    footer {
+      margin-top: 64px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 11.5px; color: #37474F; animation: fadeUp 0.5s ease 0.5s both;
+    }
+    footer a { color: #F59E0B; text-decoration: none; opacity: 0.6; }
+    footer a:hover { opacity: 1; }
+
+    @keyframes fadeDown { from { opacity:0; transform:translateY(-16px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeUp   { from { opacity:0; transform:translateY(18px);  } to { opacity:1; transform:translateY(0); } }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 60px; }
+      .summary-card { padding: 22px 18px; }
+      .news-card, .highlight-card, .alert-card, .quantum-card { padding: 18px; }
+      footer { flex-direction: column; gap: 6px; text-align: center; }
+      .stat-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo-icon">₿</div>
+    <div class="header-text">
+      <h1>幣圈日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">2026年4月4日</span>
+        <span class="badge badge-info">12 條資訊</span>
+        <span class="badge badge-week">週末縮量版</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>核心摘要</h2>
+    <ul class="summary-list">
+      <li>Schwab 宣布 H1 2026 推出現貨 BTC / ETH 直接交易，管理資產近 <strong style="color:#fff">$12 兆</strong></li>
+      <li>五項數據同指 BTC 需求萎縮：每月 -63,000 BTC，大戶一年分發 <strong style="color:#EF5350">18.8 萬 BTC</strong></li>
+      <li>Circle 凍結 USDC 法律兩難持續發酵，Drift $2.85 億事件追責延燒</li>
+      <li>量子威脅升溫：Solana 安全 vs 速度兩難，<strong style="color:#EF5350">690 萬枚</strong> BTC 面臨較高風險</li>
+      <li>JPMorgan：Q1 加密資金流入僅 $110 億，為 2025 年同期的三分之一</li>
+    </ul>
+  </div>
+
+  <!-- 機構動態 -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(66,165,245,0.15);">💼</div>
+      機構動態
+    </div>
+    <div class="highlight-card">
+      <h3>✦ Schwab 上半年推出現貨 BTC / ETH 交易</h3>
+      <p style="font-size:13.5px;line-height:1.7;color:#90CAF9;">管理近 <strong style="color:#fff">$12 兆</strong>客戶資產的 Charles Schwab 宣布，將於 2026 上半年推出 Schwab Crypto 帳戶，支援現貨比特幣與以太坊直接交易，目前開放早鳥訂閱。傳統金融巨頭直接切入加密現貨，象徵意義重大。</p>
+      <span class="tag tag-blue">傳統金融入場</span><span class="tag tag-green">$12兆規模</span>
+      <br/><a href="https://www.coindesk.com/business/2026/04/03/schwab-plans-spot-bitcoin-ether-trading-launch-in-first-half-of-2026" target="_blank">→ CoinDesk 報導</a>
+    </div>
+  </div>
+
+  <!-- 市場分析 -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(239,83,80,0.15);">📉</div>
+      市場分析
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="val down">-63K</div>
+        <div class="lbl">BTC/月需求萎縮量</div>
+      </div>
+      <div class="stat-box">
+        <div class="val down">-188K</div>
+        <div class="lbl">大戶一年分發 BTC</div>
+      </div>
+      <div class="stat-box">
+        <div class="val down">$110億</div>
+        <div class="lbl">Q1 加密資金流入</div>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <h3>比特幣市場「由內而外」收縮</h3>
+      <p>五項獨立數據源（CryptoQuant 等）指向同一結論：整體需求以每月 <strong style="color:#EF5350">-63,000 BTC</strong> 速度萎縮。機構買盤雖加速，但大戶（大型持有者）過去一年已分發近 <strong style="color:#EF5350">18.8 萬 BTC</strong>，市場流動性持續從內部稀釋。</p>
+      <a href="https://www.coindesk.com/markets/2026/04/03/five-data-sources-say-the-same-thing-about-bitcoin-market-it-s-thinning-from-the-inside" target="_blank">→ 查看完整分析</a>
+    </div>
+
+    <div class="news-card">
+      <h3>JPMorgan：Q1 加密流入僅 $110 億 — 年比跌至三分之一</h3>
+      <p>2025 年全年創下近 $1,300 億紀錄，JPMorgan 年初預期 2026 將繼續成長。然而 Q1 實際流入僅 $110 億，地緣風險與宏觀不確定性顯著壓制入場意願。</p>
+      <a href="https://www.theblock.co/post/396327/jpmorgan-crypto-flows-drop-11-billion-q1" target="_blank">→ The Block 報導</a>
+    </div>
+
+    <div class="news-card">
+      <h3>XRP 升至 $1.33 未能突破</h3>
+      <p>區間結構完整，技術面需突破 <strong style="color:#fff">$1.35</strong> 才能確認多頭方向，目前跟隨大盤資金流動。</p>
+      <a href="https://www.coindesk.com/markets/2026/04/03/what-next-as-xrp-rises-to-usd1-33-but-fails-to-break-out" target="_blank">→ 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 安全 -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(239,68,68,0.15);">🚨</div>
+      安全事件
+    </div>
+    <div class="alert-card">
+      <h3>⚠ Circle 凍結兩難 — 法律授權缺口</h3>
+      <p style="font-size:13.5px;line-height:1.7;color:#FCA5A5;">ZachXBT 主張 Circle 若更快行動可減少 Drift $2.85 億損失，但 <strong>未獲法律授權即凍結資產</strong>本身存在法律風險。事件引發業界廣泛討論：穩定幣發行商是否應具備更快的應急凍結機制，以及相應的法律框架如何建立。</p>
+      <a href="https://www.coindesk.com/business/2026/04/03/circle-under-fire-after-usd285-million-drift-hack-over-inaction-to-freeze-stolen-usdc" target="_blank">→ CoinDesk 深度報導</a>
+    </div>
+    <div class="alert-card">
+      <h3>⚠ HypurrFi 域名遭劫持</h3>
+      <p style="font-size:13.5px;line-height:1.7;color:#FCA5A5;">HypurrFi 緊急警告用戶：暫停與其網站及借貸協議的一切互動，正積極調查域名劫持事件。</p>
+      <a href="https://www.theblock.co/post/396336/hypurrfi-investigates-domain-hijacking-warns-users-interacting-lending-protocol" target="_blank">→ The Block 報導</a>
+    </div>
+  </div>
+
+  <!-- 量子威脅 -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(171,71,188,0.15);">⚛</div>
+      量子威脅專題
+    </div>
+    <div class="quantum-card">
+      <h3>Solana：安全 vs 速度的嚴酷取捨</h3>
+      <p style="font-size:13.5px;line-height:1.7;color:#CE93D8;">抗量子加密算法計算成本高，與 Solana 高速低延遲設計存在根本衝突。Ethereum 已啟動 Q-Day 準備計劃，Bitcoin 開發者仍在摸索方案，Solana 正試圖搶先佈局。</p>
+      <a href="https://www.coindesk.com/tech/2026/04/04/solana-s-quantum-threat-readiness-reveals-harsh-tradeoff-security-vs-speed" target="_blank">→ 查看原文</a>
+    </div>
+    <div class="quantum-card">
+      <h3>Google「9 分鐘破解 BTC」究竟意味什麼</h3>
+      <p style="font-size:13.5px;line-height:1.7;color:#CE93D8;">論文引發大量誤解。<strong style="color:#fff">690 萬枚</strong>比特幣（使用舊式暴露公鑰的地址）面臨較高量子風險；使用現代地址格式的持幣相對安全，但威脅時間線仍存爭議。</p>
+      <span class="tag tag-purple">690萬 BTC 高風險</span>
+      <br/><a href="https://www.coindesk.com/tech/2026/03/31/what-does-cracking-bitcoin-in-9-minutes-by-quantum-computers-actually-mean" target="_blank">→ CoinDesk 解析</a>
+    </div>
+  </div>
+
+  <!-- 監管 -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(255,183,77,0.15);">⚖</div>
+      監管
+    </div>
+    <div class="news-card">
+      <h3>Nevada 法官維持 Kalshi 運動預測市場禁令</h3>
+      <p>法官裁定 Kalshi 的運動賭注預測市場與賭博「無從區分」，延長臨時禁令。繼昨日 CFTC 起訴三州後，預測市場聯邦 vs 州監管之爭持續白熱化。</p>
+      <a href="https://www.coindesk.com/policy/2026/04/04/judge-continues-nevada-ban-on-kalshi-sports-markets" target="_blank">→ 查看原文</a>
+    </div>
+    <div class="news-card">
+      <h3>柬埔寨通過反詐騙法 · Cosmos Leap Wallet 關閉</h3>
+      <p><strong style="color:#fff">柬埔寨</strong>通過《反科技詐騙法》，設立五項新罪名，直接打擊東南亞加密詐騙園區。</p>
+      <p><strong style="color:#fff">Cosmos Leap Wallet</strong>：Terra 崩潰後轉型多鏈 Cosmos 生態，終仍宣布關閉。</p>
+    </div>
+  </div>
+
+  <!-- Keywords -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(245,158,11,0.1);">#</div>
+      關鍵詞
+    </div>
+    <div class="keywords">
+      <span class="keyword">#Schwab</span>
+      <span class="keyword">#BTC收縮</span>
+      <span class="keyword">#Circle凍結兩難</span>
+      <span class="keyword">#HypurrFi</span>
+      <span class="keyword">#量子威脅</span>
+      <span class="keyword">#Solana</span>
+      <span class="keyword">#Kalshi</span>
+      <span class="keyword">#LeapWallet</span>
+      <span class="keyword">#JPMorgan</span>
+      <span class="keyword">#XRP</span>
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      來源：
+      <a href="https://www.theblock.co" target="_blank">The Block</a> ·
+      <a href="https://www.coindesk.com" target="_blank">CoinDesk</a>
+      · 覆蓋日期：2026-04-04 (UTC+8)
+    </div>
+    <span>Generated by Crypto Daily</span>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>幣圈日報 · 2026年4月3日</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #000;
+      color: #E3F2FD;
+      font-family: -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      bottom: -200px;
+      right: -200px;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,130,49,0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: -200px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(66,165,245,0.05) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 60px 32px 80px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 52px;
+      animation: fadeDown 0.6s ease both;
+    }
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #B45309, #F59E0B);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 20px rgba(245,158,11,0.3);
+    }
+    .header-text h1 {
+      font-family: -apple-system, "SF Pro Display", sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .header-meta { display: flex; gap: 8px; margin-top: 5px; flex-wrap: wrap; }
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+    }
+    .badge-date { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); color: #F59E0B; }
+    .badge-info { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #90A4AE; }
+    .badge-holiday { background: rgba(102,187,106,0.1); border: 1px solid rgba(102,187,106,0.2); color: #81C784; }
+
+    .summary-card {
+      background: rgba(245,158,11,0.05);
+      border: 1px solid rgba(245,158,11,0.15);
+      border-radius: 20px;
+      padding: 32px 36px;
+      margin-bottom: 40px;
+      animation: fadeUp 0.5s ease 0.1s both;
+    }
+    .summary-card h2 {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.4px;
+      color: #F59E0B; margin-bottom: 18px;
+    }
+    .summary-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .summary-list li {
+      display: flex; gap: 12px; align-items: flex-start;
+      font-size: 14px; line-height: 1.65; color: #CFE8FF;
+    }
+    .summary-list li::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: #F59E0B; margin-top: 9px; flex-shrink: 0;
+    }
+
+    .alert-card {
+      background: rgba(239,68,68,0.06);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-left: 3px solid #EF4444;
+      border-radius: 16px;
+      padding: 22px 26px;
+      margin-bottom: 14px;
+    }
+    .alert-card h3 { font-size: 15px; font-weight: 700; color: #FCA5A5; margin-bottom: 9px; }
+
+    .section {
+      margin-bottom: 36px;
+      animation: fadeUp 0.5s ease both;
+    }
+    .section:nth-child(3) { animation-delay: 0.12s; }
+    .section:nth-child(4) { animation-delay: 0.17s; }
+    .section:nth-child(5) { animation-delay: 0.22s; }
+    .section:nth-child(6) { animation-delay: 0.27s; }
+    .section:nth-child(7) { animation-delay: 0.32s; }
+    .section:nth-child(8) { animation-delay: 0.37s; }
+    .section:nth-child(9) { animation-delay: 0.42s; }
+
+    .section-title {
+      display: flex; align-items: center; gap: 10px;
+      font-family: -apple-system, "SF Pro Display", sans-serif;
+      font-size: 17px; font-weight: 700; color: #fff;
+      margin-bottom: 18px; padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .section-icon {
+      width: 28px; height: 28px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; font-size: 14px;
+    }
+
+    .news-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 22px 26px; margin-bottom: 14px;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .news-card:hover {
+      background: rgba(245,158,11,0.05);
+      border-color: rgba(245,158,11,0.2);
+      transform: translateY(-2px);
+    }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 9px; }
+    .news-card p { font-size: 13.5px; line-height: 1.7; color: #90A4AE; }
+    .news-card p + p { margin-top: 8px; }
+    .tag {
+      display: inline-block; margin-top: 12px; margin-right: 6px;
+      padding: 2px 9px; background: rgba(245,158,11,0.1);
+      border-radius: 6px; font-size: 11px; color: #F59E0B;
+    }
+    .tag-blue { background: rgba(66,165,245,0.1); color: #42A5F5; }
+    .tag-green { background: rgba(102,187,106,0.1); color: #81C784; }
+    .tag-red { background: rgba(239,68,68,0.1); color: #EF9A9A; }
+    .news-card a {
+      display: inline-block; margin-top: 10px; font-size: 12px;
+      color: #42A5F5; text-decoration: none; opacity: 0.7; transition: opacity 0.2s;
+    }
+    .news-card a:hover { opacity: 1; }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+    th { text-align: left; padding: 8px 12px; color: #F59E0B; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    td { padding: 9px 12px; color: #90A4AE; border-bottom: 1px solid rgba(255,255,255,0.04); line-height: 1.5; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    td strong { color: #E3F2FD; }
+
+    .price-up   { color: #4CAF50; font-weight: 600; }
+    .price-down { color: #EF5350; font-weight: 600; }
+    .price-flat { color: #F59E0B; font-weight: 600; }
+
+    .trend-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .trend-list li {
+      display: flex; gap: 12px; align-items: flex-start;
+      font-size: 13.5px; line-height: 1.65; color: #90A4AE;
+    }
+    .trend-num {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(245,158,11,0.12); color: #F59E0B;
+      font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+
+    .keywords { display: flex; flex-wrap: wrap; gap: 8px; }
+    .keyword {
+      padding: 5px 14px;
+      background: rgba(245,158,11,0.07);
+      border: 1px solid rgba(245,158,11,0.18);
+      border-radius: 20px; font-size: 12px; color: #F59E0B;
+      transition: background 0.2s; cursor: default;
+    }
+    .keyword:hover { background: rgba(245,158,11,0.15); }
+
+    footer {
+      margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 11.5px; color: #37474F;
+      animation: fadeUp 0.5s ease 0.5s both;
+    }
+    footer a { color: #F59E0B; text-decoration: none; opacity: 0.6; }
+    footer a:hover { opacity: 1; }
+
+    @keyframes fadeDown { from { opacity:0; transform:translateY(-16px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeUp   { from { opacity:0; transform:translateY(18px);  } to { opacity:1; transform:translateY(0); } }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 60px; }
+      .summary-card { padding: 22px 18px; }
+      .news-card { padding: 18px; }
+      footer { flex-direction: column; gap: 6px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="logo-icon">₿</div>
+    <div class="header-text">
+      <h1>幣圈日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">2026年4月3日</span>
+        <span class="badge badge-info">44 條資訊</span>
+        <span class="badge badge-holiday">Good Friday</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Summary -->
+  <div class="summary-card">
+    <h2>核心摘要</h2>
+    <ul class="summary-list">
+      <li>ZachXBT 炮轟 Circle：USDC 凍結反應過慢，涉逾 <strong style="color:#EF5350">$4.2 億</strong>非法資金，含 Drift $2.8 億事件</li>
+      <li>美國 3 月非農大超預期 <strong style="color:#fff">+17.8 萬</strong>（預期 +6 萬），BTC 持穩 $67K 附近</li>
+      <li>Coinbase 獲 OCC 有條件批准國家信託牌照，邁向聯邦監管加密托管</li>
+      <li>以太坊基金會完成 70,000 ETH（$9,300 萬）質押目標</li>
+      <li>CFTC 起訴三州，爭奪預測市場聯邦管轄權</li>
+    </ul>
+  </div>
+
+  <!-- Security -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(239,68,68,0.15);">🚨</div>
+      安全 · 監管爭議
+    </div>
+
+    <div class="alert-card">
+      <h3>⚠ ZachXBT 炮轟 Circle：USDC 凍結反應太慢</h3>
+      <p style="font-size:13.5px;line-height:1.7;color:#FCA5A5;">鏈上偵探列舉逾 12 起案例，涉及超過 <strong>$4.2 億</strong>非法資金，批評 Circle 凍結 USDC 行動遲緩。最新案例即為昨日 Drift Protocol $2.86 億遭駭事件。</p>
+      <a href="https://www.theblock.co/post/396296/blockchain-sleuth-zachxbt-accuses-circle-slow-usdc-freezes-420-million-illicit-funds" target="_blank">→ The Block 報導</a>
+    </div>
+
+    <div class="news-card">
+      <h3>CFTC 起訴三州 — 預測市場管轄權之爭</h3>
+      <p>CFTC 起訴伊利諾伊、亞利桑那、康涅狄格三州，主張《商品交易法》賦予其對所有掉期（含預測市場）的<strong style="color:#fff">專屬聯邦管轄權</strong>，直接挑戰各州監管嘗試。</p>
+      <span class="tag">監管</span><span class="tag tag-red">聯邦 vs 州</span>
+      <br/><a href="https://www.coindesk.com/policy/2026/04/02/cftc-sues-illinois-over-state-s-cease-and-desist-letters-against-prediction-markets" target="_blank">→ CoinDesk 報導</a>
+    </div>
+  </div>
+
+  <!-- Market -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(66,165,245,0.15);">📊</div>
+      市場行情
+    </div>
+
+    <div class="news-card">
+      <h3>BTC 持穩 $67K · 山寨幣低流動性反彈</h3>
+      <p>Good Friday 假期：CME 期貨與 ETF 活動全面暫停，流動性偏低。山寨幣在低流動性環境反彈，但衍生品數據與期權偏斜顯示交易者仍防備下行風險。</p>
+      <table>
+        <tr><th>資產</th><th>表現</th><th>備注</th></tr>
+        <tr><td>BTC</td><td><span class="price-flat">持穩 ~$67K</span></td><td>非農強勁後仍膠著</td></tr>
+        <tr><td>NEAR</td><td><span class="price-up">+5.8%</span></td><td>山寨幣領漲</td></tr>
+        <tr><td>AVAX</td><td><span class="price-up">+3.6%</span></td><td>—</td></tr>
+        <tr><td>WTI 原油</td><td><span class="price-up">+$10.60（$110.75）</span></td><td>今年最大單日漲幅</td></tr>
+      </table>
+      <p style="margin-top:14px;color:#EF9A9A;font-size:13px;">⚠ 風險：BTC 跌破 $68K 進入負 Gamma 區域，可能引發連鎖拋售至 <strong style="color:#EF5350">$60K</strong> 以下。</p>
+      <a href="https://www.coindesk.com/markets/2026/04/02/here-s-why-bitcoin-s-drop-below-usd68-000-puts-it-at-risk-of-a-crash-under-usd60-000" target="_blank">→ 查看分析</a>
+    </div>
+  </div>
+
+  <!-- Policy -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(171,71,188,0.15);">⚖</div>
+      政策 · 監管
+    </div>
+
+    <div class="news-card">
+      <h3>Coinbase 獲 OCC 有條件批准國家信託牌照</h3>
+      <p>美國貨幣監理署（OCC）有條件批准 Coinbase，待合規審查後可作為<strong style="color:#fff">聯邦監管加密托管機構</strong>運營。「這是為托管和市場基礎設施帶來聯邦監管統一性。」</p>
+      <span class="tag tag-green">重大里程碑</span>
+      <br/><a href="https://www.coindesk.com/policy/2026/04/02/coinbase-wins-initial-occ-nod-for-trust-charter-boosting-sustody-push" target="_blank">→ CoinDesk 報導</a>
+    </div>
+
+    <div class="news-card">
+      <h3>Todd Blanche 出任代理 AG · 加密執法走向受矚</h3>
+      <p>Trump 解雇 AG Pam Bondi，任命 <strong style="color:#fff">Todd Blanche</strong>（DOJ 加密執法備忘錄起草人、前 Trump 私人律師）為代理總檢察長。加密業界密切關注後續執法政策走向。</p>
+      <a href="https://www.coindesk.com/policy/2026/04/02/todd-blanche-author-of-doj-crypto-enforcement-memo-now-interim-ag" target="_blank">→ 查看原文</a>
+    </div>
+
+    <div class="news-card">
+      <h3>加密市場結構法案延後 · 穩定幣收益妥協審閱中</h3>
+      <p>修訂版穩定幣收益妥協方案本週由加密與銀行業代表審閱，法案正式發布時間推遲。</p>
+      <a href="https://www.coindesk.com/policy/2026/04/02/crypto-market-structure-bill-release-pushed-back-as-industries-view-revised-stablecoin-yield-compromise-this-week" target="_blank">→ 查看原文</a>
+    </div>
+  </div>
+
+  <!-- Products -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(66,165,245,0.15);">📦</div>
+      產品動態
+    </div>
+
+    <div class="news-card">
+      <h3>Ethereum Foundation 完成 70,000 ETH 質押</h3>
+      <p>追加質押 <strong style="color:#fff">$9,300 萬 ETH</strong>，完成 2 月宣布計劃，將閒置國庫轉為生息資產。</p>
+      <span class="tag tag-blue">ETH</span>
+      <br/><a href="https://www.coindesk.com/markets/2026/04/03/ethereum-foundation-stakes-another-usd93-million-ether-reaching-its-70-000-eth-target" target="_blank">→ 查看原文</a>
+    </div>
+
+    <div class="news-card">
+      <h3>Circle 推出 cirBTC 包裝比特幣代幣</h3>
+      <p>Circle 宣布 cirBTC 計劃，重返比特幣生態（其比特幣支付 App Circle Pay 已於 2019 年下線）。</p>
+      <a href="https://www.theblock.co/post/396275/circle-plans-wrapped-bitcoin-token-cirbtc" target="_blank">→ 查看原文</a>
+    </div>
+
+    <div class="news-card">
+      <h3>其他產品更新</h3>
+      <ul class="trend-list" style="margin-top:4px">
+        <li><span class="trend-num">▸</span><span><strong style="color:#fff">Naoris Protocol</strong>：抗量子區塊鏈主網上線，採 NIST 認可算法，應對 Q-Day 威脅</span></li>
+        <li><span class="trend-num">▸</span><span><strong style="color:#fff">Hyperliquid</strong>：永續合約市佔近 6%，3 月月交易量接近 $2,000 億</span></li>
+        <li><span class="trend-num">▸</span><span><strong style="color:#fff">Securitize × NYSE</strong>：推進代幣化股票，股票上鏈邁向主流金融</span></li>
+        <li><span class="trend-num">▸</span><span><strong style="color:#fff">Bittensor（TAO）</strong>：3 月近乎翻倍，分佈式訓練敘事獲市場認可，AI token 板塊受益</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Mining -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(255,183,77,0.15);">⛏</div>
+      礦業
+    </div>
+    <div class="news-card">
+      <h3>Riot Platforms Q1 售出 $2.9 億 BTC</h3>
+      <p>主要礦商持續出售 BTC，向 <strong style="color:#fff">AI / HPC 基礎設施</strong>轉型趨勢加速。</p>
+      <a href="https://www.theblock.co/post/396289/riot-platforms-sells-290-million-usd-bitcoin" target="_blank">→ 查看原文</a>
+    </div>
+  </div>
+
+  <!-- Macro -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(102,187,106,0.15);">🌍</div>
+      宏觀信號
+    </div>
+    <div class="news-card">
+      <ul class="trend-list">
+        <li><span class="trend-num">1</span><span><strong style="color:#fff">美國 3 月非農</strong> +17.8 萬（大超預期 +6 萬），失業率 4.3%；前值大幅下修至 -13.3 萬</span></li>
+        <li><span class="trend-num">2</span><span><strong style="color:#fff">Trump</strong>：擬延長伊朗戰事，謀求開放霍爾木茲、「掌控石油」，Truth Social 直播施壓</span></li>
+        <li><span class="trend-num">3</span><span><strong style="color:#fff">Fed Goolsbee</strong>：油價飆升風險推高通脹預期，干擾去通脹進程</span></li>
+        <li><span class="trend-num">4</span><span><strong style="color:#fff">Fed Williams</strong>：貨幣政策已備好應對風險；戰爭影響尚未體現在經濟數據中</span></li>
+        <li><span class="trend-num">5</span><span><strong style="color:#fff">ECB Villeroy</strong>：下次利率變動「極可能」為加息</span></li>
+        <li><span class="trend-num">6</span><span><strong style="color:#fff">JONATHAN Memecoin</strong>：紀念 193 歲烏龜 Jonathan 的 Solana 代幣，愚人節暴漲 <strong style="color:#4CAF50">1,400%</strong></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Keywords -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-icon" style="background:rgba(245,158,11,0.1);">#</div>
+      關鍵詞
+    </div>
+    <div class="keywords">
+      <span class="keyword">#ZachXBT</span>
+      <span class="keyword">#Circle</span>
+      <span class="keyword">#USDC</span>
+      <span class="keyword">#Coinbase信託</span>
+      <span class="keyword">#OCC</span>
+      <span class="keyword">#CFTC</span>
+      <span class="keyword">#預測市場</span>
+      <span class="keyword">#ETH質押</span>
+      <span class="keyword">#cirBTC</span>
+      <span class="keyword">#Hyperliquid</span>
+      <span class="keyword">#TAO</span>
+      <span class="keyword">#非農</span>
+      <span class="keyword">#霍爾木茲</span>
+      <span class="keyword">#抗量子</span>
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      來源：
+      <a href="https://www.theblock.co" target="_blank">The Block</a> ·
+      <a href="https://www.coindesk.com" target="_blank">CoinDesk</a> ·
+      <a href="https://www.forexlive.com" target="_blank">ForexLive</a>
+      · 覆蓋日期：2026-04-03 (UTC+8)
+    </div>
+    <span>Generated by Crypto Daily</span>
+  </footer>
+
+</div>
+</body>
+</html>

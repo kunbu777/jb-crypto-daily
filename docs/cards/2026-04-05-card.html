@@ -5,49 +5,16 @@
 <title>流光字卡 · 2026-04-05</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: #080C14;
-    display: flex; align-items: center; justify-content: center;
-    min-height: 100vh;
-    font-family: -apple-system, "PingFang TC", "Noto Sans TC", sans-serif;
-  }
-  .card {
-    position: relative; width: 400px;
-    background: linear-gradient(160deg, #0D1420 0%, #0A1020 100%);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px; padding: 32px 28px 28px;
-    overflow: hidden;
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 20px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06);
-  }
-  .card::before {
-    content: '';
-    position: absolute; top: 0; left: -80px;
-    width: 80px; height: 100%;
-    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%);
-    animation: shimmer 4s ease-in-out infinite; z-index: 0;
-  }
-  @keyframes shimmer {
-    0%   { left: -80px; opacity: 0; }
-    10%  { opacity: 1; }
-    90%  { opacity: 1; }
-    100% { left: calc(100% + 80px); opacity: 0; }
-  }
-  .card::after {
-    content: '';
-    position: absolute; top: 15%; left: 0;
-    width: 2px; height: 70%;
-    background: linear-gradient(180deg, transparent, rgba(148,163,184,0.4) 30%, rgba(200,215,230,0.7) 50%, rgba(148,163,184,0.4) 70%, transparent);
-    border-radius: 2px;
-    animation: glow-line 4s ease-in-out infinite;
-  }
-  @keyframes glow-line {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.9; }
-  }
+  body { background: #080C14; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, "PingFang TC", sans-serif; }
+  .card { position: relative; width: 400px; background: linear-gradient(160deg, #0D1420 0%, #0A1020 100%); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 32px 28px 28px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 20px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06); }
+  .card::before { content: ''; position: absolute; top: 0; left: -80px; width: 80px; height: 100%; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%); animation: shimmer 4s ease-in-out infinite; z-index: 0; }
+  @keyframes shimmer { 0% { left: -80px; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { left: calc(100% + 80px); opacity: 0; } }
+  .card::after { content: ''; position: absolute; top: 15%; left: 0; width: 2px; height: 70%; background: linear-gradient(180deg, transparent, rgba(148,163,184,0.4) 30%, rgba(200,215,230,0.7) 50%, rgba(148,163,184,0.4) 70%, transparent); border-radius: 2px; animation: glow-line 4s ease-in-out infinite; }
+  @keyframes glow-line { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.9; } }
   .card-inner { position: relative; z-index: 1; }
   .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
   .card-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-  .card-title { font-size: 15px; font-weight: 700; color: #F1F5F9; letter-spacing: -0.2px; }
+  .card-title { font-size: 15px; font-weight: 700; color: #F1F5F9; }
   .card-date { font-size: 11px; color: #64748B; margin-top: 2px; }
   .divider { height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0.08), transparent); margin: 14px 0; }
   .section-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #475569; margin-bottom: 14px; }
@@ -73,7 +40,27 @@
     <div class="divider"></div>
     <div class="section-label">核心摘要</div>
     <div class="news-list">
-    </div>
+      <div class="news-item">
+        <span class="news-num">01</span>
+        <div class="news-body">
+          <div class="news-tag">🗓️【總經焦點】</div>
+          <div class="news-title">本週多項美國關鍵經濟數據與聯準會會議紀要將陸續公布</div>
+        </div>
+      </div>
+      <div class="news-item">
+        <span class="news-num">02</span>
+        <div class="news-body">
+          <div class="news-tag">🏦【機構進展】</div>
+          <div class="news-title">嘉信理財開放比特幣與以太幣直接交易候補名單</div>
+        </div>
+      </div>
+      <div class="news-item">
+        <span class="news-num">03</span>
+        <div class="news-body">
+          <div class="news-tag">🚨【政策監管】</div>
+          <div class="news-title">國際貨幣基金組織警告代幣化金融恐放大市場危機</div>
+        </div>
+      </div></div>
     <div class="card-footer"><span class="footer-text">金蹦社群 JB CLUB</span></div>
   </div>
 </div>

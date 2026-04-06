@@ -12,15 +12,31 @@
   header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
   .logo-img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0; box-shadow: 0 4px 20px rgba(245,158,11,0.3); }
   .header-text h1 { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
-  .header-meta { display: flex; gap: 8px; margin-top: 5px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 5px; flex-wrap: wrap; }
   .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; }
   .badge-date { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); color: #F59E0B; }
-  .report-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 36px 40px; animation: fadeUp 0.5s ease 0.1s both; line-height: 1.9; font-size: 15px; color: #CFE8FF; }
-  .report-card p { margin-bottom: 8px; }
+  .summary-card { background: rgba(245,158,11,0.05); border: 1px solid rgba(245,158,11,0.15); border-radius: 20px; padding: 32px 36px; margin-bottom: 40px; animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.4px; color: #F59E0B; margin-bottom: 14px; }
+  .summary-card p { font-size: 15px; line-height: 1.8; color: #CFE8FF; }
+  .section { margin-bottom: 38px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .news-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 22px 26px; margin-bottom: 14px; transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { background: rgba(245,158,11,0.05); border-color: rgba(245,158,11,0.2); transform: translateY(-2px); }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 10px; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: #90A4AE; }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: rgba(245,158,11,0.1); border-radius: 6px; font-size: 11px; color: #F59E0B; }
+  .news-card a { font-size: 12px; color: #42A5F5; text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: rgba(245,158,11,0.07); border: 1px solid rgba(245,158,11,0.18); border-radius: 20px; font-size: 12px; color: #F59E0B; }
   footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 11.5px; color: #37474F; display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: #F59E0B; text-decoration: none; opacity: 0.6; }
+  footer a:hover { opacity: 1; }
   @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .report-card { padding: 22px 18px; } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card { padding: 22px 18px; } .news-card { padding: 18px; } }
 </style>
 </head>
 <body>
@@ -32,19 +48,129 @@
       <div class="header-meta"><span class="badge badge-date">2026年4月6日</span></div>
     </div>
   </header>
-  <div class="report-card"><p>📅【金蹦社群幣圈日報｜2026年4月6日】</p>
-<br/><p>📈 昨日市場總結：</p>
-<p>儘管市場情緒因地緣政治緊張而觸及數月低點，比特幣價格仍保持相對穩定，顯示出一定的韌性。</p>
-<br/><p>💡 三大關鍵資訊：</p>
-<br/><p>01｜🏦【傳統金融】嘉信理財開通比特幣與以太坊直接交易候補名單</p>
-<p>美國大型券商嘉信理財（Charles Schwab）已開放直接交易比特幣與以太坊的候補名單，目標在第二季有限度推出。此舉預示著更多傳統金融機構將直接涉足加密貨幣市場，有望為市場引入更多資金與流動性。</p>
-<br/><p>02｜🚨【監管風險】國際貨幣基金組織警告代幣化金融恐擴大市場危機</p>
-<p>國際貨幣基金組織（IMF）發布報告警示，代幣化金融的即時結算特性可能在危機時移除干預緩衝，並將穩定幣比作貨幣市場基金。這可能引發各國央行及監管機構對代幣化資產和穩定幣加強審查，進而影響其未來發展與採用。</p>
-<br/><p>03｜📊【總體經濟】本週聚焦美國CPI、PCE及FOMC會議紀要等關鍵數據</p>
-<p>本週市場將迎來多項重量級總體經濟數據，包括美國3月消費者物價指數（CPI）、個人消費支出（PCE）以及聯準會（FOMC）會議紀要。這些數據將直接影響市場對通膨和利率政策的預期，可能導致加密貨幣市場出現顯著波動。</p>
-</div>
+  <div class="summary-card">
+    <h2>核心摘要</h2>
+    <p>本週加密市場在宏觀經濟數據與地緣政治緊張的雙重壓力下，比特幣展現出驚人的韌性，而機構對加密資產的興趣持續升溫。儘管安全威脅因AI進化而加劇，且監管挑戰依舊存在，但比特幣作為潛在避險資產的敘事正被強化，同時區塊鏈技術與AI的融合也開啟了新的應用前景。</p>
+  </div>
+  
+  <div class="section">
+    <div class="section-title" style="color:#fff">
+      <div class="section-icon" style="background:rgba(59,130,246,0.15)">🏦</div>
+      機構採用
+    </div>
+    
+        <div class="news-card">
+          <h3>Charles Schwab 開放比特幣與以太幣直接交易等待名單，目標第二季度有限度推出</h3>
+          <p>傳統金融巨頭Charles Schwab正式開放比特幣和以太幣的直接交易服務等待名單，此舉標誌著主流機構對加密貨幣市場的進一步深入。儘管初期在紐約和路易斯安那州受限，且費用與託管細節尚未公開，此舉仍預示著更多零售投資者將有機會透過信任的平台接觸加密資產，有望提升市場流動性與採用率。這也反映出傳統金融機構正積極回應客戶對加密資產的需求，逐步將其納入主流服務範疇。</p>
+          <div class="card-footer"><span class="tag">Charles Schwab</span><span class="tag">機構投資</span><span class="tag">比特幣</span><span class="tag">以太幣</span><span class="tag">直接交易</span><a href="https://www.theblock.co/post/396358/charles-schwab-opens-waitlist-for-direct-bitcoin-and-ether-trading-targeting-q2-limited-launch?utm_source=rss&utm_medium=rss" target="_blank">→ 查看原文</a></div>
+        </div>
+        <div class="news-card">
+          <h3>前英國財政大臣支持比特幣，作為失敗系統的替代方案</h3>
+          <p>英國前財政大臣Kwasi Kwarteng公開支持比特幣，認為其是應對現有失敗金融系統的替代方案。他反思了當前英國市場的動盪和財政「厄運循環」，並透露自己已開始投資比特幣。這項來自高層政治人物的背書，不僅提升了比特幣的公眾形象和合法性，也可能鼓勵更多主流投資者重新評估比特幣在對抗傳統金融系統脆弱性方面的潛力。</p>
+          <div class="card-footer"><span class="tag">比特幣</span><span class="tag">英國</span><span class="tag">財政大臣</span><span class="tag">宏觀經濟</span><span class="tag">主流採用</span><a href="https://www.coindesk.com/markets/2026/04/03/ex-uk-chancellor-backs-bitcoin-as-alternative-to-failing-systems" target="_blank">→ 查看原文</a></div>
+        </div>
+  </div>
+  <div class="section">
+    <div class="section-title" style="color:#fff">
+      <div class="section-icon" style="background:rgba(139,92,246,0.15)">⚖️</div>
+      監管政策
+    </div>
+    
+        <div class="news-card">
+          <h3>IMF警告代幣化金融恐加劇市場危機，敦促以央行為核心的結算機制</h3>
+          <p>國際貨幣基金組織（IMF）警告，代幣化金融雖然效率高，但其即時結算特性可能在市場危機時移除介入的時間緩衝，進而放大金融不穩定性。報告特別將穩定幣與貨幣市場基金進行比較，強調其潛在風險。IMF呼籲應建立以中央銀行為核心的結算機制，以確保金融體系的穩定性，這對未來代幣化資產的監管框架將產生深遠影響。</p>
+          <div class="card-footer"><span class="tag">IMF</span><span class="tag">代幣化金融</span><span class="tag">穩定幣</span><span class="tag">金融穩定</span><span class="tag">中央銀行</span><a href="https://www.theblock.co/post/396353/imf-warns-tokenized-finance-could-amplify-market-crises-urges-central-bank-anchored-settlement?utm_source=rss&utm_medium=rss" target="_blank">→ 查看原文</a></div>
+        </div>
+        <div class="news-card">
+          <h3>內華達州法官延長Kalshi禁令，稱體育合約與賭博「無異」</h3>
+          <p>美國內華達州法官延長了對預測市場平台Kalshi的禁令，認定其體育賽事合約與賭博無異。這項裁決突顯了監管機構在區分創新金融產品與傳統博弈之間的挑戰，尤其是在預測市場領域。此案可能對未來基於區塊鏈的預測市場平台造成監管壓力，要求其在產品設計和營運模式上更加明確地與賭博區隔，以避免觸犯相關法律。</p>
+          <div class="card-footer"><span class="tag">Kalshi</span><span class="tag">預測市場</span><span class="tag">監管</span><span class="tag">法律訴訟</span><span class="tag">博弈</span><a href="https://www.theblock.co/post/396350/nevada-judge-extends-kalshi-ban-calls-sports-contracts-indistinguishable-from-gambling?utm_source=rss&utm_medium=rss" target="_blank">→ 查看原文</a></div>
+        </div>
+  </div>
+  <div class="section">
+    <div class="section-title" style="color:#fff">
+      <div class="section-icon" style="background:rgba(16,185,129,0.15)">📊</div>
+      總經數據
+    </div>
+    
+        <div class="news-card">
+          <h3>Newsquawk本週焦點：川普伊朗期限、美國CPI、PCE、FOMC會議紀要、RBNZ及OPEC+</h3>
+          <p>本週全球市場將迎來一系列關鍵經濟數據與事件，包括美國通膨數據（CPI、PCE）、聯準會會議紀要（FOMC Minutes）以及紐西蘭儲備銀行（RBNZ）和OPEC+的決策。這些數據和事件將對全球利率政策、通膨預期以及原油市場產生重大影響。對於加密貨幣市場而言，美國通膨數據和聯準會的貨幣政策立場將是判斷未來流動性和風險資產表現的重要指標，投資者需密切關注。</p>
+          <div class="card-footer"><span class="tag">CPI</span><span class="tag">PCE</span><span class="tag">FOMC</span><span class="tag">總體經濟</span><span class="tag">聯準會</span><span class="tag">通膨</span><a href="https://investinglive.com/centralbank/newsquawk-week-in-focus-trumps-iran-deadline-us-cpi-pce-fomc-minutes-rbnz-and-opec-20260405/" target="_blank">→ 查看原文</a></div>
+        </div>
+  </div>
+  <div class="section">
+    <div class="section-title" style="color:#fff">
+      <div class="section-icon" style="background:rgba(239,68,68,0.15)">🚨</div>
+      安全事件
+    </div>
+    
+        <div class="news-card">
+          <h3>Ledger CTO警告：AI正使加密貨幣安全問題雪上加霜</h3>
+          <p>Ledger的技術長（CTO）Charles Guillemet警告指出，人工智慧（AI）的發展正使得加密貨幣駭客攻擊變得更便宜、更快速，進一步加劇了加密領域的安全挑戰。AI能夠自動化攻擊流程，生成更逼真的釣魚郵件或惡意程式碼，對現有的安全防禦構成巨大威脅。這項警示呼籲整個加密社群必須重新思考並升級安全策略，以應對AI驅動的新型威脅，確保用戶資產的安全。</p>
+          <div class="card-footer"><span class="tag">AI</span><span class="tag">網路安全</span><span class="tag">駭客攻擊</span><span class="tag">Ledger</span><span class="tag">加密安全</span><a href="https://www.coindesk.com/tech/2026/04/05/ai-is-making-crypto-s-security-problem-even-worse-ledger-cto-warns" target="_blank">→ 查看原文</a></div>
+        </div>
+        <div class="news-card">
+          <h3>Drift稱2.7億美元漏洞攻擊為北韓情報部門策劃的六個月行動</h3>
+          <p>DeFi平台Drift披露，其高達2.7億美元的漏洞攻擊竟是北韓情報部門策劃長達六個月的精密行動。攻擊者偽裝成交易公司，甚至在多國與Drift貢獻者進行面對面會談，並投入100萬美元自有資金，耐心等待半年後才執行資產盜取。這起事件凸顯了加密領域面臨的國家級威脅，其複雜性和長期性遠超一般網路犯罪，對整個產業的KYC/AML和內部安全審查機制提出了更嚴峻的挑戰。</p>
+          <div class="card-footer"><span class="tag">Drift</span><span class="tag">DeFi</span><span class="tag">漏洞攻擊</span><span class="tag">北韓</span><span class="tag">國家級威脅</span><span class="tag">網路安全</span><a href="https://www.coindesk.com/markets/2026/04/05/drift-says-usd270-million-exploit-was-a-six-month-north-korean-intelligence-operation" target="_blank">→ 查看原文</a></div>
+        </div>
+  </div>
+  <div class="section">
+    <div class="section-title" style="color:#fff">
+      <div class="section-icon" style="background:rgba(100,116,139,0.15)">🚀</div>
+      產品發布
+    </div>
+    
+        <div class="news-card">
+          <h3>螞蟻集團區塊鏈部門推出平台，讓AI代理能在加密軌道上交易</h3>
+          <p>螞蟻集團的區塊鏈部門推出Anvita平台，旨在讓AI代理能夠在加密貨幣基礎設施上進行交易。此平台整合了代幣化服務，並提供一個讓AI代理協調任務並使用穩定幣進行即時支付的環境。這項創新結合了AI與區塊鏈技術，為未來自動化交易和智能合約的應用開啟了新篇章，預示著AI驅動的經濟活動將更加無縫地融入加密生態系統。</p>
+          <div class="card-footer"><span class="tag">螞蟻集團</span><span class="tag">AI</span><span class="tag">區塊鏈</span><span class="tag">產品發布</span><span class="tag">穩定幣</span><span class="tag">代幣化</span><a href="https://www.coindesk.com/business/2026/04/02/ant-group-s-blockchain-arm-unveils-platform-for-ai-agents-to-transact-on-crypto-rails" target="_blank">→ 查看原文</a></div>
+        </div>
+        <div class="news-card">
+          <h3>比特幣1.3兆美元安全競賽：旨在量子防護全球最大區塊鏈的關鍵倡議</h3>
+          <p>隨著量子計算威脅從假設走向現實，比特幣開發者正積極探索如何為這個市值1.3兆美元的區塊鏈進行量子安全升級。這場「安全競賽」旨在保護比特幣免受未來量子電腦的攻擊，確保其長期穩定性與不可篡改性。相關倡議包括研究新的加密算法和升級協定，這對於比特幣作為全球最大加密貨幣的未來至關重要，顯示其社群對長期技術挑戰的重視。</p>
+          <div class="card-footer"><span class="tag">比特幣</span><span class="tag">量子計算</span><span class="tag">安全性</span><span class="tag">區塊鏈技術</span><span class="tag">加密算法</span><a href="https://www.coindesk.com/tech/2026/04/04/bitcoin-s-usd1-3-trillion-security-race-key-initiatives-aimed-at-quantum-proofing-the-world-s-largest-blockchain" target="_blank">→ 查看原文</a></div>
+        </div>
+  </div>
+  <div class="section">
+    <div class="section-title" style="color:#fff">
+      <div class="section-icon" style="background:rgba(245,158,11,0.15)">📉</div>
+      市場行情
+    </div>
+    
+        <div class="news-card">
+          <h3>比特幣保持穩定，市場情緒跌至伊朗戰爭爆發以來最差水平</h3>
+          <p>儘管市場情緒跌至自伊朗戰爭爆發以來的最低點，比特幣價格卻保持穩定。鏈上數據、社交情緒和持倉指標均顯示極端悲觀，但機構買盤依然強勁，這表明市場內部存在著多空拉鋸。這種穩定的表現可能意味著即便在負面情緒籠罩下，長期持有者和機構投資者對比特幣的信心並未動搖，支撐了其價格底部，也可能是暴風雨前的寧靜。</p>
+          <div class="card-footer"><span class="tag">比特幣</span><span class="tag">市場情緒</span><span class="tag">地緣政治</span><span class="tag">機構買盤</span><span class="tag">價格穩定</span><a href="https://www.coindesk.com/markets/2026/04/05/bitcoin-enters-april-at-its-most-hated-level-since-the-war-began" target="_blank">→ 查看原文</a></div>
+        </div>
+        <div class="news-card">
+          <h3>Mercado Bitcoin發現：全球衝擊後比特幣表現往往優於黃金和股票</h3>
+          <p>Mercado Bitcoin的研究發現，在全球經濟或地緣政治衝擊之後的60天內，比特幣的表現往往優於黃金和標普500指數。這項分析表明，比特幣可能具備一定的避險資產特性，尤其是在傳統金融市場動盪時能提供更好的回報。這項研究為比特幣作為多元化投資組合中的潛在避險工具提供了新的視角，增強了其在不確定時期作為「數位黃金」的敘事。</p>
+          <div class="card-footer"><span class="tag">比特幣</span><span class="tag">避險資產</span><span class="tag">黃金</span><span class="tag">股票</span><span class="tag">市場衝擊</span><span class="tag">投資回報</span><a href="https://www.coindesk.com/markets/2026/03/30/bitcoin-tends-to-outperform-gold-and-stocks-after-global-shocks-mercado-bitcoin-finds" target="_blank">→ 查看原文</a></div>
+        </div>
+  </div>
+  <div class="section">
+    <div class="section-title" style="color:#fff">
+      <div class="section-icon" style="background:rgba(100,116,139,0.15)">💡</div>
+      其他
+    </div>
+    
+        <div class="news-card">
+          <h3>數位資產金庫現在必須證明其價值</h3>
+          <p>這篇分析指出，數位資產金庫（Digital Asset Treasuries）現在必須證明其價值，並提出了三種主要策略以保持競爭力。隨著加密市場的成熟，企業不再僅僅將數位資產視為投機工具，而是需要更專業、更具策略性的管理方式來創造實際收益。這包括優化流動性管理、探索收益型機會以及強化風險控制，對於企業級別的加密資產配置和營運提出了更高要求。</p>
+          <div class="card-footer"><span class="tag">數位資產</span><span class="tag">企業金庫</span><span class="tag">投資策略</span><span class="tag">流動性管理</span><span class="tag">風險管理</span><a href="https://www.coindesk.com/opinion/2026/04/04/digital-asset-treasuries-must-now-earn-their-keep" target="_blank">→ 查看原文</a></div>
+        </div>
+  </div>
+  <div class="section">
+    <div class="section-title" style="color:#fff">
+      <div class="section-icon" style="background:rgba(245,158,11,0.1)">#</div>
+      關鍵詞
+    </div>
+    <div class="keywords"><span class="keyword">#比特幣</span><span class="keyword">#機構採用</span><span class="keyword">#安全性</span><span class="keyword">#監管政策</span><span class="keyword">#總體經濟</span><span class="keyword">#AI</span><span class="keyword">#穩定幣</span><span class="keyword">#DeFi</span><span class="keyword">#量子計算</span><span class="keyword">#地緣政治</span></div>
+  </div>
   <footer>
-    <div>來源：The Block · ForexLive · WSJ Markets · CoinDesk</div>
+    <div>來源：<a href="https://www.theblock.co" target="_blank">The Block</a> · <a href="https://www.coindesk.com" target="_blank">CoinDesk</a> · <a href="https://www.forexlive.com" target="_blank">ForexLive</a> · <a href="https://www.wsj.com" target="_blank">WSJ</a></div>
     <span>金蹦社群 JB CLUB</span>
   </footer>
 </div>
